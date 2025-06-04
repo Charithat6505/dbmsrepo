@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kannama Cooks - Cloud Kitchen</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body {
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      color: #333;
+      transition: background 0.5s ease;
+    }
+
+    header {
+      background: rgba(40, 65, 110, 0.9);
+      padding: 1.5rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(6px);
+    }
+
+    nav button {
+      background: transparent;
+      border: none;
+      color: white;
+      font-weight: bold;
+      margin: 0 0.5rem;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      text-decoration: underline;
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    section {
+      padding: 2rem;
+      min-height: 100vh;
+      display: none;
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.7s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .home {
+      background-image: url('https://sukhis.com/app/uploads/2022/04/image3-4.jpg');
+      color: white;
+      text-shadow: 1px 1px 3px #000;
+      background-repeat: no-repeat;
+    }
+
+    .home h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .home p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      max-width: 700px;
+      background: rgba(0,0,0,0.4);
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .menu-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .menu-card:hover {
+      transform: scale(1.02);
+    }
+
+    .menu-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .menu-card h3 {
+      margin: 0.5rem 0;
+    }
+
+    .menu-card button {
+      background: #56cfe1;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .menu-card button:hover {
+      background: #168aad;
+    }
+
+    #searchBar {
+      padding: 0.6rem;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+      margin-bottom: 1rem;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      border: 1px solid #999;
+    }
+
+    form button {
+      background: #3a86ff;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .review-box {
+      background: #d0f0f5;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid #ccc;
+      background: rgba(255,255,255,0.85);
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .total-box {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      text-align: right;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(40, 65, 110, 0.9);
+      color: white;
+      backdrop-filter: blur(5px);
+    }
+
+    footer .social {
+      margin-top: 0.5rem;
+    }
+
+    .social a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+  <h1>Kannama Cooks</h1>
+  <nav>
+    <button onclick="showPage('home')">🏠 Home</button>
+    <button onclick="showPage('menu')">🍛 Menu</button>
+    <button onclick="showPage('cart')">🛒 Cart</button>
+    <button onclick="showPage('login')">🔐 Login</button>
+    <button onclick="showPage('reviews')">📝 Reviews</button>
+  </nav>
+</header>
+
+<!-- Home Page -->
+<section id="home" class="home active">
+  <h2>Welcome to Kannama Cooks</h2>
+  <p>Kannama Cooks is a vibrant cloud kitchen dedicated to celebrating the rich culinary heritage of South India. From spicy Chettinad gravies to wholesome Ragi Mudde and soulful Andhra pappu, our menu offers a journey through Tamil Nadu, Kerala, Karnataka, and Andhra Pradesh. We use fresh, locally sourced ingredients to prepare dishes that are not only mouthwateringly delicious but also healthy and hygienically cooked.</p>
+</section>
+
+<!-- Menu Page -->
+<section id="menu" style="background-image: url('https://images.unsplash.com/photo-1604908177523-9375a889bea0');">
+  <h2>Our Menu</h2>
+  <input type="text" id="searchBar" placeholder="Search dishes..." onkeyup="filterMenu()">
+  <div class="menu-grid" id="menuList">
+    <div class="menu-card" data-name="Chettinad Chicken">
+      <img src="https://butfirstchai.com/wp-content/uploads/2023/01/chicken-chettinad-curry-recipes.jpg" alt="Chettinad Chicken">
+      <h3>Chettinad Chicken - ₹150</h3>
+      <p>Tamil Nadu</p>
+      <button onclick="addToCart('Chettinad Chicken', 150)">Add</button>
+    </div>
+    <div class="menu-card" data-name="Kerala Sadya">
+      <img src="https://www.sharmispassions.com/wp-content/uploads/2020/12/20564329779_b9af3e0191_o.jpg" alt="Kerala Sadya">
+      <h3>Kerala Sadya - ₹180</h3>
+      <p>Kerala</p>
+      <button onclick="addToCart('Kerala Sadya', 180)">Add</button>
+    </div>
+    <div class="menu-card" data-name="Ragi Mudde">
+      <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/02/ragi-mudde-recipe-480x270.jpg" alt="Ragi Mudde">
+      <h3>Ragi Mudde - ₹100</h3>
+      <p>Karnataka</p>
+      <button onclick="addToCart('Ragi Mudde', 100)">Add</button>
+    </div>
+    <div class="menu-card" data-name="Andhra Pappu">
+      <img src="https://www.honeywhatscooking.com/wp-content/uploads/2023/06/Andhra-Style-Tomato-Dal-Tomato-Pappu-Featured.jpg" alt="Andhra Pappu">
+      <h3>Andhra Pappu - ₹150</h3>
+      <p>Andhra Pradesh</p>
+      <button onclick="addToCart('Andhra Pappu', 150)">Add</button>
+    </div>
+    <div class="menu-card" data-name="Andhra Gunttivankaya">
+      <img src="https://static.toiimg.com/thumb/81907975.cms?imgsize=373318&width=800&height=800" alt="Andhra Gunttivankaya">
+      <h3>Andhra Gunttivankaya - ₹150</h3>
+      <p>Andhra Pradesh</p>
+      <button onclick="addToCart('Andhra Gunttivankaya', 150)">Add</button>
+    </div>
+
+    <div class="menu-card" data-name="Mysore Masala Dosa">
+      <img src="https://vismaifood.com/storage/app/uploads/public/8b4/19e/427/thumb__700_0_0_0_auto.jpg" alt="Mysore Masala Dosa">
+      <h3>Mysore Masala Dosa - ₹120</h3>
+      <p>Karnataka</p>
+      <button onclick="addToCart('Mysore Masala Dosa', 120)">Add</button>
+    </div>
+
+    <div class="menu-card" data-name="Hyderabadi Biryani">
+      <img src="https://www.licious.in/blog/wp-content/uploads/2020/12/Hyderabadi-chicken-Biryani.jpg" alt="Hyderabadi Biryani">
+      <h3>Hyderabadi Biryani - ₹200</h3>
+      <p>Telangana</p>
+      <button onclick="addToCart('Hyderabadi Biryani', 200)">Add</button>
+    </div>
+
+    <div class="menu-card" data-name="Kozhi Varutharachathu">
+      <img src="https://butfirstchai.com/wp-content/uploads/2022/08/Varutharacha_Malabar_Chicken_Curry_06.jpg" alt="Kozhi Varutharachathu">
+      <h3>Kozhi Varutharachathu - ₹170</h3>
+      <p>Kerala</p>
+      <button onclick="addToCart('Kozhi Varutharachathu', 170)">Add</button>
+    </div>
+
+    <div class="menu-card" data-name="Appam">
+      <img src="https://thefamiliarkitchen.com/wp-content/uploads/2019/02/img_3166.jpg" alt="Appam">
+      <h3>Appam - ₹120</h3>
+      <p>Tamil Nadu</p>
+      <button onclick="addToCart('Appam', 90)">Add</button>
+    </div>
+
+    <div class="menu-card" data-name="Kobbari Annam">
+      <img src="https://www.pavaniskitchen.com/wp-content/uploads/2021/03/coconut-annam.jpg" alt="Kobbari Annam">
+      <h3>Kobbari Annam - ₹110</h3>
+      <p>Andhra Pradesh</p>
+      <button onclick="addToCart('Kobbari Annam', 110)">Add</button>
+    </div>
+
+    </div>
+</section>
+
+
+<!-- Login Page -->
+<section id="login" style="background-image: url('https://sukhis.com/app/uploads/2022/04/image3-4.jpg');">
+  <h2>Login to Kannama Cooks</h2>
+  <form onsubmit="alert('Login Successful!'); return false;">
+    <input type="text" placeholder="Username" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+</section>
+
+
+<footer>
+  &copy; 2025 Kannama Cooks | Bringing South India to Your Plate 💚
+  <div class="social">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+  </div>
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  const cart = [];
+  function addToCart(item, price) {
+    cart.push({ name: item, price: price });
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartEl = document.getElementById('cart-items');
+    const totalEl = document.getElementById('total-price');
+    if (cart.length === 0) {
+      cartEl.innerHTML = "<p>Your cart is empty.</p>";
+      totalEl.innerHTML = "";
+    } else {
+      cartEl.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price;
+        cartEl.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>₹${item.price}</span></div>`;
+      });
+      totalEl.innerHTML = `Total: ₹${total}`;
+    }
+  }
+
+  function addReview(event) {
+    event.preventDefault();
+    const name = document.getElementById('reviewer').value.trim();
+    const text = document.getElementById('reviewText').value.trim();
+    if (name && text) {
+      const reviewList = document.getElementById('review-list');
+      const newReview = document.createElement('div');
+      newReview.className = "review-box";
+      newReview.innerHTML = `<p><strong>${name}:</strong> ${text}</p>`;
+      reviewList.appendChild(newReview);
+      document.getElementById('reviewer').value = '';
+      document.getElementById('reviewText').value = '';
+    }
+  }
+
+  function filterMenu() {
+    const search = document.getElementById('searchBar').value.toLowerCase();
+    const cards = document.querySelectorAll('.menu-card');
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name').toLowerCase();
+      card.style.display = name.includes(search) ? 'block' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>
