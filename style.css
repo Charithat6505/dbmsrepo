@@ -98,15 +98,10 @@ letter-spacing: 2px;
 box-shadow: 0 10px 30px rgba(0,255,255,0.3);
 }
 
-
-
-
-
-
-
-
-
-
+.cta-button:hover {
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 20px 40px rgba(0,255,255,0.5);
+}
 
 .solar-system {
 position: relative;
