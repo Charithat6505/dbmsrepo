@@ -283,6 +283,14 @@
     </div>
 </section>
 
+<!-- Cart Page -->
+<section id="cart">
+  <h2>Your Cart</h2>
+  <div id="cart-items">
+    <p>Your cart is empty.</p>
+  </div>
+  <div class="total-box" id="total-price"></div>
+</section>
 
 <!-- Login Page -->
 <section id="login" style="background-image: url('https://sukhis.com/app/uploads/2022/04/image3-4.jpg');">
@@ -295,6 +303,19 @@
 </section>
 
 
+<!-- Reviews Page -->
+<section id="reviews">
+  <h2>Customer Reviews</h2>
+  <div class="review-box" id="review-list">
+    <p><strong>Meera:</strong> The Sadya was authentic and reminded me of Onam back home. Loved it!</p>
+  </div>
+  <h3>Write a Review</h3>
+  <form onsubmit="addReview(event)">
+    <input type="text" id="reviewer" placeholder="Your Name" required>
+    <textarea id="reviewText" placeholder="Your review" rows="4" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</section>
 <footer>
   &copy; 2025 Kannama Cooks | Bringing South India to Your Plate 💚
   <div class="social">
