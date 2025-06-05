@@ -145,6 +145,16 @@ form button {
   margin-bottom: 1rem;
 }
 
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #ccc;
+  background: rgba(255,255,255,0.85);
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
 .total-box {
   font-weight: bold;
   font-size: 1.2rem;
